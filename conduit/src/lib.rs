@@ -18,6 +18,7 @@ pub type HandlerResult = Result<Response<Body>, BoxError>;
 ///
 /// Servers must add this to the request's extensions, capturing the moment
 /// request headers were received.
+#[derive(Copy, Clone, Debug, Ord, PartialOrd, Eq, PartialEq)]
 pub struct StartInstant(Instant);
 
 impl StartInstant {
