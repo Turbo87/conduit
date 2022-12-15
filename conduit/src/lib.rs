@@ -23,11 +23,17 @@ pub struct StartInstant(Instant);
 
 impl StartInstant {
     pub fn now() -> Self {
-        Self(Instant::now())
+        Instant::now().into()
     }
 
     pub fn elapsed(&self) -> Duration {
         self.0.elapsed()
+    }
+}
+
+impl From<Instant> for StartInstant{
+    fn from(instant: Instant) -> Self {
+        Self(instant)
     }
 }
 
