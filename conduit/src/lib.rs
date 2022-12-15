@@ -24,6 +24,10 @@ impl StartInstant {
     pub fn now() -> Self {
         Self(Instant::now())
     }
+
+    pub fn elapsed(&self) -> Duration {
+        self.0.elapsed()
+    }
 }
 
 /// A type representing a `Response` body.
@@ -91,7 +95,7 @@ pub trait RequestExt {
     /// This method may panic if the server does not add `StartInstant` to the
     /// request extensions, or if it has been removed by the application.
     fn elapsed(&self) -> Duration {
-        self.extensions().get::<StartInstant>().unwrap().0.elapsed()
+        self.extensions().get::<StartInstant>().unwrap().elapsed()
     }
 
     /// The version of HTTP being used
